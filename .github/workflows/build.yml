@@ -6,13 +6,13 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Compile Hack.dylib
         run: |
           clang++ -dynamiclib -arch arm64 -isysroot $(xcrun --sdk iphoneos --show-sdk-path) \
             -framework Foundation -framework UIKit -framework CoreGraphics \
             -O2 Hack.mm -o Hack.dylib
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: dylib
           path: Hack.dylib
